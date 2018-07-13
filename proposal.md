@@ -23,8 +23,13 @@ The FDIC (Federal Deposit Insurance Company) is a Federal organization that was 
 ### Frontend
 - Vue 
 - Vuetify 
-- D3 for data analysis
+- D3 for data analysis and visualization 
+- Firebase 
 
 ### Backend
 - CSVTOJSON [link](https://www.npmjs.com/package/csvtojson)
-- Express / Knex
+- Express 
+- Knex
+- PostgreSGL
+- Node.js
+- Heroku
