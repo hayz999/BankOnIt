@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button>Click Me!</button>
+    <v-btn>Click Me!</v-btn>
     <Result />
     <Data />
     <NewSearch />

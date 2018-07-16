@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "db:seed": "node ./db/seeds.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "csvtojson": "^2.0.6"
+    "csvtojson": "^2.0.6",
+    "mongodb": "^3.1.1",
+    "monk": "^6.0.6"
   }
 }
