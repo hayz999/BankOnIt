@@ -27,6 +27,18 @@ router.get('/zipcode', (req, res) => {
   }
 })
 
-router.get('')
+//this does not work!!
+router.get('/company' , (req, res) => {
+  if(req.query.company) {
+    complaints.find({'company' : req.query.company})
+      .then(complaints => res.json(complaints))
+  } else {
+    res.json({message: 'Company not found'})
+  }
+})
+
+router.post('/', (req, res) => {
+  
+})
 
 module.exports = router
