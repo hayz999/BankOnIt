@@ -1,6 +1,6 @@
 const { Complaints } = require('./models');
 const { db } = require('./connection')
-const data = require('../index')
+const data = require('../converter')
 
 Promise.all([
   // Step #1, delete ALL from each collection
