@@ -1,19 +1,15 @@
-const monk = require('monk');
-const ObjectId = (id) => monk.id(id);
 const { Complaints } = require('./models');
-
-const itemId = ObjectId()
-
-const data = {
-  complaints: []
-}
+const { db } = require('./connection')
+const data = require('../index')
 
 Promise.all([
   // Step #1, delete ALL from each collection
+  data,
   Complaints.remove({})
 ])
-  .then(() => {
+  .then((results) => {
     return Promise.all([
-      Complaints.insert(data.complaints)
+      Complaints.insert(results[0])
     ])
   })
+  .then(() => db.close())

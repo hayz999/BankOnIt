@@ -1,12 +1,18 @@
 <template>
-  <div id="app">
-    
-  </div>
+  <v-app dark>
+    <router-view></router-view>
+    <Footer />
+  </v-app>
 </template>
 
 <script>
+import Footer from './components/Footer'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Footer
+  }
 }
 </script>
 
