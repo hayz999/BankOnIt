@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "db:seed": "node ./db/seeds.js",
-    "start": "nodemon"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
