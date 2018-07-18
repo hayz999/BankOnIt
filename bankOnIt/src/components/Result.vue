@@ -19,7 +19,10 @@
 </template>
 
 <script>
+
+
 export default {
-  name: 'Result'
+  name: 'Result',
+  
 }
 </script>

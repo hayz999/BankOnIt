@@ -2,11 +2,14 @@ const express = require('express')
 const complaints = require('./db/routes')
 const port = parseInt(process.env.PORT || 5000)
 const bodyParser = require('body-parser')
+const cors = require('cors')
+const morgan = require('morgan')
 const app = express()
 
 app.get('/', (req, res) => res.send('I work!'))
 
-
+app.use(morgan('dev'))
+app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/complaints', complaints)
