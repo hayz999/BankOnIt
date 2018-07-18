@@ -1,28 +1,24 @@
 <template>
 <div>
-  <v-jumbotron class="primary">
+  <v-jumbotron class="secondary">
     <v-container fill-height>
       <v-layout align-center>
         <v-flex>
-          <h3 class="display-3">Welcome to the site</h3>
-          <span class="subheading">Lorem ipsum dolor sit amet, pri veniam forensibus id. Vis maluisset molestiae id, ad semper lobortis cum. At impetus detraxit incorrupte usu, repudiare assueverit ex eum, ne nam essent vocent admodum.</span>
-          <v-divider class="my-3"></v-divider>
+          <h3 class="display-2">Bank more responsibly</h3>
+          <span class="subheading">Using FDIC (Federal Deposit Insurance Corporation) consumer complaint data, BankOnIt aims to help you understand possible risks of certain banks. Risk is always a factor when trusting a company with your hard earned money. Minify that risk and feel more confident with your descisions. </span>
+          <v-divider color="primary" class="my-3"></v-divider>
         </v-flex>
       </v-layout>
     </v-container>
   </v-jumbotron>
-  <Search />
+  <v-btn :to="{ name: 'Search' }" depressed large color="primary">New Search</v-btn>
 </div>
 </template>
 
 <script>
-import Search from './Search'
 
 export default {
-  name: 'Header',
-  components: {
-    Search
-  }
+  name: 'Header'
 }
 </script>
 

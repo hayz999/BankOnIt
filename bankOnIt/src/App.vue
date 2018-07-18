@@ -1,5 +1,6 @@
 <template>
-  <v-app dark>
+  <v-app >
+    <main-header></main-header>
     <router-view></router-view>
     <Footer />
   </v-app>
@@ -7,12 +8,13 @@
 
 <script>
 import Footer from './components/Footer'
-
+import MainHeader from './components/MainHeader'
 
 export default {
   name: 'App',
   components: {
-    Footer
+    Footer,
+    MainHeader
   }
   
 }
