@@ -26,7 +26,7 @@
       <v-btn v-if='state != null' @click='getByState' >Search</v-btn>
     </v-container>
   </section>
-  <Result :bankData='bankData'/>
+  <Results :bankData='bankData'/>
 </div>
 </template>
 
@@ -34,12 +34,12 @@
 const zipUrl = 'https://bankonit.herokuapp.com/complaints/zipcode?zipCode='
 const stateUrl = 'https://bankonit.herokuapp.com/complaints/state?state='
 
-import Result from './Result';
+import Results from './Results';
 
 export default {
   name: 'Search',
   components: {
-    Result
+    Results
   },
   data () {
     return {

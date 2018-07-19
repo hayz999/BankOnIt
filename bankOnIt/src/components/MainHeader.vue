@@ -22,14 +22,16 @@ export default {
 <style scoped>
   img {
     width: 40%;
-    height: inherit;
+    height: auto;
     padding-left: 1rem;
     padding-bottom: 1rem;
+
   }
   
   section {
     background-image: url('../assets/header.jpg');
     background-size: cover;
+  
   }
 
   @media only screen and (max-width: 600px) {

@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="primary" app fixed>
+  <v-footer class="primary footer" app fixed>
     <span>&copy;BankOnIt, LLC. 2018</span>
   </v-footer>
 </template>
@@ -9,4 +9,11 @@ export default {
   name: 'Footer'
 }
 </script>
+
+<style scoped>
+  .footer {
+    margin-top: 2rem;
+  }
+</style>
+
 
