@@ -2,12 +2,11 @@
   <section>
     <FilterResults />
     <Result v-for="(bank, index) in bankData" :key="index" :bank="bank" />
-    <div class="text-xs-center">
-    <v-pagination
-      v-model="page"
-      :length="6"
-      value="page"
-    ></v-pagination>
+    <div  class="text-xs-center">
+      <v-pagination
+        v-model="page"
+        :length="6"
+      ></v-pagination>
     </div>
     <NewSearch />
   </section>
@@ -30,9 +29,10 @@ export default {
       page: 1
     }
   },
-  watch: {
-    page: function updateData(page) {
-      this.getLimit(page)
+  computed: {
+    propertyComputed () {
+      console.log('I change when page changes');
+      return this.page
     }
   }
 }

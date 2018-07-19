@@ -84,7 +84,10 @@ export default {
     getLimit(page) {
       let newOffset = this.limit * page
       this.offest = newOffset
+      console.log(this.offset);
       this.getByState()
+      
+      
     }
   }
 }
