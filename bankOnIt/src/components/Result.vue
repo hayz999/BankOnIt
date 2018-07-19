@@ -37,11 +37,6 @@
       <h3 v-if='responseToCustomer'>{{bank.companyResponseToConsumer}}</h3>
       <h3 v-else>No response</h3>
     </v-card>
-    <!-- <v-progress-circular 
-      :width="3"
-      color="green"
-      indeterminate
-    ></v-progress-circular> -->
   </v-flex>
 </v-layout>
 </template>
@@ -65,7 +60,7 @@ export default {
 
   .card-content {
     padding: 1rem;
-    max-width: 80%;
+    max-width: 50%;
   }
 
   h1 {
@@ -77,7 +72,7 @@ export default {
 
   h3 {
     font-weight: 400;
-    text-indent: 2.5rem;
+    padding-left: 2.5rem;
     line-break: break;
   }
 

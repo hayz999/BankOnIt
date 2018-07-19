@@ -22,7 +22,7 @@
           required>
         </v-text-field>
       </v-form>
-      <v-btn v-if='zipCode != null' @click='getByZip' >Search</v-btn>
+      <v-btn v-if='zipCode != ""' @click='getByZip' >Search</v-btn>
       <v-btn v-if='state != null' @click='getByState' >Search</v-btn>
     </v-container>
   </section>
@@ -33,7 +33,7 @@
 <script>
 const zipUrl = 'https://bankonit.herokuapp.com/complaints/zipcode?zipCode='
 const stateUrl = 'https://bankonit.herokuapp.com/complaints/state?state='
-
+const dataLimit = '&limit=10&offset=0'
 import Results from './Results';
 
 export default {
@@ -64,7 +64,7 @@ export default {
       })
     },
     getByState () {
-      fetch(stateUrl + this.state + '&limit=20&offset=0')
+      fetch(stateUrl + this.state + dataLimit )
       .then(response => response.json())
       .then(data => {
         this.bankData = data
