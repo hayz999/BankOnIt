@@ -1,6 +1,6 @@
 <template>
 <div>
-  <section>
+  <section v-if='showSearch'>
     <v-container fluid class="secondary">
       <v-layout row wrap align-center>
         <v-select
@@ -26,14 +26,15 @@
       <v-btn v-if='state != null' @click='getByState' >Search</v-btn>
     </v-container>
   </section>
-  <Results :bankData='bankData'/>
+  <Results v-if='showResult' :bankData='bankData'
+            :getLimit='getLimit'/>
 </div>
 </template>
 
 <script>
 const zipUrl = 'https://bankonit.herokuapp.com/complaints/zipcode?zipCode='
 const stateUrl = 'https://bankonit.herokuapp.com/complaints/state?state='
-const dataLimit = '&limit=10&offset=0'
+
 import Results from './Results';
 
 export default {
@@ -52,7 +53,13 @@ export default {
       zipCodeRules: [
         v => v.length <= 10 || 'Zip Code must be less than 6 characters'
       ],
-      bankData: []
+      bankData: [],
+      sL: '&limit=',
+      oS: '&offset=',
+      limit: 10,
+      offset: 0,
+      showSearch: true,
+      showResult: false
     }
   },
   methods: {
@@ -62,13 +69,22 @@ export default {
       .then(data => {
         this.bankData = data
       })
+      this.showSearch = !this.showSearch
+      this.showResult = !this.showResult
     },
     getByState () {
-      fetch(stateUrl + this.state + dataLimit )
+      fetch(stateUrl + this.state + this.sL + this.limit + this.oS + this.offset )
       .then(response => response.json())
       .then(data => {
         this.bankData = data
       })
+      this.showSearch = !this.showSearch
+      this.showResult = !this.showResult
+    },
+    getLimit(page) {
+      let newOffset = this.limit * page
+      this.offest = newOffset
+      this.getByState()
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
 <div>
-  <v-jumbotron class="secondary">
+  <v-jumbotron color="white">
     <v-container fill-height>
       <v-layout align-center>
         <v-flex>
