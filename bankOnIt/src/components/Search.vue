@@ -47,7 +47,7 @@ export default {
         'AL', 'AK', 'AZ','AR', 'CA', 'CO', 'CT','DE', 'DC','FL', 'GA', 'HI', 'ID','IL', 'IN', 'IA', 'KS', 'KY','LA', 'ME', 'MD','MA', 'MI', 'MN', 'MS','MO', 'MY', 'NE','NV','NH', 'NJ', 'NM', 'NY','NC', 'ND', 'OH','OK', 'OR', 'PA','RI', 'SC', 'SD', 'TN','TX', 'UT', 'VT', 'VA','WA', 'WV', 'WI', 'WY'
         ],
       valid: false,
-      zipCode: null,
+      zipCode: "",
       state: null,
       zipCodeRules: [
         v => v.length <= 10 || 'Zip Code must be less than 6 characters'
@@ -64,7 +64,7 @@ export default {
       })
     },
     getByState () {
-      fetch(stateUrl + this.state)
+      fetch(stateUrl + this.state + '&limit=20&offset=0')
       .then(response => response.json())
       .then(data => {
         this.bankData = data
