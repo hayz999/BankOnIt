@@ -26,8 +26,11 @@
       <v-btn v-if='state != null' @click='getByState' >Search</v-btn>
     </v-container>
   </section>
-  <Results v-if='showResult' :bankData='bankData'
-            :getLimit='getLimit'/>
+  <Results v-if='showResult' 
+            :bankData='bankData'
+            :getLimit='getLimit'
+            :zipCode='zipCode'
+            :state='state'/>
 </div>
 </template>
 

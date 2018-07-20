@@ -60,7 +60,14 @@ export default {
 
   .card-content {
     padding: 1rem;
-    max-width: 50%;
+    margin-right: 2rem;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .card-content {
+      padding: 1rem;
+      margin-right: 0;
+    }
   }
 
   h1 {
