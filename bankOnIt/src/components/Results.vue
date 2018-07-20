@@ -50,11 +50,22 @@ export default {
   },
   methods: {
     filterData (selected, name, zipCode) {
-      //if selected filter bankData and pageData (bankData.filter(bank => return bank.product == selected))
-      //if name (bankData.filter(bank => return bank.company == name))
-      //if zipCode (pageData.filter(bank => return bank.zipCode == zipCode))
+      // if(selected) {
+      //   return this.bankData.filter(bank => {
+      //     return bank.product == selected
+      //   })
+      // }
+      // if(name) {
+      //   return this.pageData.filter(bank => {
+      //     return bank.company == name
+      //   })
+      // }
+      if (zipCode) {
+        this.pageData.filter(bank => {
+          return bank.zipCode == zipCode
+        })
+      }
       console.log(selected, name, zipCode)
-      
     }
   }
 }
