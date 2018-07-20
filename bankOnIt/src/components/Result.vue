@@ -1,6 +1,5 @@
 <template>
-<v-layout class='results ' >
-  <v-flex >
+<v-layout :fluid='false' class='results ' >
     <v-card class='card-content'>
       <v-card-title primary-title >
         <i class="material-icons">account_balance</i>
@@ -37,7 +36,6 @@
       <h3 v-if='responseToCustomer'>{{bank.companyResponseToConsumer}}</h3>
       <h3 v-else>No response</h3>
     </v-card>
-  </v-flex>
 </v-layout>
 </template>
 
@@ -55,7 +53,9 @@ export default {
 
 <style scoped>
   .results {
-    margin: 1rem 0;
+    margin: 1rem 1rem;
+    max-width: 70vw;
+    min-width: 70vw;
   }
 
   .card-content {
@@ -67,6 +67,11 @@ export default {
     .card-content {
       padding: 1rem;
       margin-right: 0;
+    }
+
+    .results {
+      margin: 1rem 1rem;
+      min-width: 94vw;
     }
   }
 

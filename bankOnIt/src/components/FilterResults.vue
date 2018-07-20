@@ -1,5 +1,5 @@
 <template>
-  <v-container id='sidebar' class='filter-container' fluid>
+  <v-container  class='filter-container' fluid>
     <h1>Filter Results</h1>
     <h3>Product type</h3>
     <v-checkbox v-model="selected" label="Mortgage" value="Mortgage"></v-checkbox>
@@ -37,7 +37,15 @@ export default {
 </script>
 
 <style scoped>
-  
+  .filter-container {
+    width: 25vw;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .filter-container {
+      width: 100%;
+    }
+  }
 </style>
 
 

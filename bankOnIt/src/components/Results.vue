@@ -7,7 +7,7 @@
         <FilterResults />
       </div>
       <div class="results">
-        <Result v-for="(bank, index) in bankData" :key="index" :bank="bank" />
+        <Result v-for="(bank, index) in pageData" :key="index" :bank="bank" />
       </div>
     </div>
     <div  class="text-xs-center">
@@ -27,7 +27,7 @@ import FilterResults from './FilterResults'
 
 
 export default {
-  props: ['bankData', 'getLimit', 'zipCode', 'state'],
+  props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2'],
   components: {
     Result,
     NewSearch,
@@ -36,6 +36,11 @@ export default {
   data () {
     return {
       page: 1
+    }
+  },
+  asyncComputed : {
+    pageData: function() { 
+      return this.loadPage(this.page)
     }
   }
 }
@@ -58,8 +63,8 @@ export default {
 
   @media only screen and (max-width: 600px) {
     .results-container {
-    display: flex;
-    flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
   }
 
@@ -68,11 +73,4 @@ export default {
     flex-direction: column;
   }
 
-  .filter-results {
-    width: 50%;
-    position: sticky; /* Fixed Sidebar (stay in place on scroll) */
-    top: 20px; /* Stay at the top */
-    
-    overflow-x: hidden; 
-  }
 </style>

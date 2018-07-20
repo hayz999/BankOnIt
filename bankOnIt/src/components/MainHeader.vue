@@ -1,9 +1,9 @@
 <template>
-  <a to="{name: 'Header'}">
-    <section>
-      <img :src='image' alt='logo' />
-    </section>
-  </a>
+  <section>
+    <a href='http://localhost:8080/#/'>
+      <img  :src='image' alt='logo' />
+    </a>
+  </section>
 </template>
 
 <script>

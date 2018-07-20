@@ -22,15 +22,16 @@
           required>
         </v-text-field>
       </v-form>
-      <v-btn v-if='zipCode != ""' @click='getByZip' >Search</v-btn>
-      <v-btn v-if='state != null' @click='getByState' >Search</v-btn>
+      <v-btn v-if='zipCode != ""' @click.prevent='getByZip' >Search</v-btn>
+      <v-btn v-if='state != null' @click.stop.prevent='handleSearch' >Search</v-btn>
     </v-container>
   </section>
   <div v-if='showResult'>
     <Results  :bankData='bankData'
-              :getLimit='getLimit'
+              :loadPage='loadPage'
               :zipCode='zipCode'
-              :state='state'/>
+              :state='state'
+              :getByState2='getByState2'/>
   </div>
 </div>
 </template>
@@ -67,6 +68,9 @@ export default {
     }
   },
   methods: {
+    handleSearch () {
+      this.getByState()
+    }, 
     getByZip () {
       fetch(zipUrl + this.zipCode)
       .then(response => response.json())
@@ -81,15 +85,23 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.bankData = data
+        this.showSearch = !this.showSearch
+        this.showResult = !this.showResult
+        return data
       })
-      this.showSearch = !this.showSearch
-      this.showResult = !this.showResult
     },
-    getLimit(page) {
-      let newOffset = this.limit * page
-      this.offest = newOffset
-      console.log(this.offset);
-      this.getByState()
+    getByState2 (newOffset) {
+      console.log('offset', newOffset);
+      return fetch(stateUrl + this.state + this.sL + this.limit + this.oS + newOffset)
+      .then(response => response.json())
+      .then(data => {
+        return data
+      })
+    },
+    loadPage(page) {
+      let newOffset = this.limit * (page - 1)
+      console.log( page, this.limit, newOffset );
+      return this.getByState2(newOffset)
     }
   }
 }
