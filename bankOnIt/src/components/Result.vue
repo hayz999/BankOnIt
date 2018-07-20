@@ -61,6 +61,11 @@ export default {
     margin: 1rem 1rem;
     max-width: 70vw;
     min-width: 70vw;
+    box-shadow: 3px 6px 50px gray;
+  }
+  
+  .results:hover {
+    box-shadow: 8px 16px 50px gray;
   }
 
   .card-content {

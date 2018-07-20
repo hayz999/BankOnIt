@@ -1,7 +1,7 @@
 <template>
 <div>
-  <section v-if='showSearch'>
-    <v-container fluid class="secondary">
+  <section class='search-container' v-if='showSearch'>
+    <v-container fluid >
       <v-layout row wrap align-center>
         <v-select
           :items="states"
@@ -106,4 +106,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .search-container {
+    margin-right: 5rem;
+    margin-left: 5rem;
+    margin-top: 2rem;
+    background-color: white;
+    box-shadow: 3px 6px 50px gray;
+  }
+</style>
+
 
