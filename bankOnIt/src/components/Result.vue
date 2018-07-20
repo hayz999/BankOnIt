@@ -12,6 +12,11 @@
       </div>
       <h3>{{bank.dateReceived}}</h3>
       <div class='title-container'>
+        <i class="material-icons">my_location</i>
+        <h1>Company Zip Code</h1>
+      </div>
+      <h3>{{bank.zipCode}}</h3>
+      <div class='title-container'>
         <i class="material-icons">credit_card</i>
         <h1>Product</h1>
       </div>

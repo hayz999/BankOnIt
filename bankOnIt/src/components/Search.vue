@@ -22,8 +22,8 @@
           required>
         </v-text-field>
       </v-form>
-      <v-btn v-if='zipCode != ""' @click.prevent='getByZip' >Search</v-btn>
-      <v-btn v-if='state != null' @click.stop.prevent='handleSearch' >Search</v-btn>
+      <v-btn v-if='zipCode != ""' @click='getByZip' >Search</v-btn>
+      <v-btn v-if='state != null' @click.stop.prevent='handleStateSearch' >Search</v-btn>
     </v-container>
   </section>
   <div v-if='showResult'>
@@ -68,7 +68,7 @@ export default {
     }
   },
   methods: {
-    handleSearch () {
+    handleStateSearch () {
       this.getByState()
     }, 
     getByZip () {
@@ -100,7 +100,7 @@ export default {
     },
     loadPage(page) {
       let newOffset = this.limit * (page - 1)
-      console.log( page, this.limit, newOffset );
+      window.scrollTo(0, 0)
       return this.getByState2(newOffset)
     }
   }

@@ -6,14 +6,18 @@
       <div class="results filter-results">
         <FilterResults />
       </div>
-      <div class="results">
+      <div v-if='state' class="results">
         <Result v-for="(bank, index) in pageData" :key="index" :bank="bank" />
       </div>
+      <div v-if='zipCode' class="results">
+        <Result v-for="(bank, index) in bankData" :key="index" :bank="bank" />
+      </div>
     </div>
-    <div  class="text-xs-center">
+    <div v-if='state' class="text-xs-center">
       <v-pagination
           v-model="page"
-          :length="6"
+          :length="15"
+          :total-visible='5'
       ></v-pagination>
     </div>
     <NewSearch />
