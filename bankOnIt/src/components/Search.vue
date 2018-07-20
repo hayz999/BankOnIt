@@ -91,7 +91,6 @@ export default {
       })
     },
     getByState2 (newOffset) {
-      console.log('offset', newOffset);
       return fetch(stateUrl + this.state + this.sL + this.limit + this.oS + newOffset)
       .then(response => response.json())
       .then(data => {

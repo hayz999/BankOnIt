@@ -4,7 +4,8 @@
     <h1 class='search-title' v-if='state'>Complaints filed for {{this.state}}</h1>
     <div class="results-container">
       <div class="results filter-results">
-        <FilterResults />
+        <FilterResults :filterData='filterData'
+                        :state='this.state' />
       </div>
       <div v-if='state' class="results">
         <Result v-for="(bank, index) in pageData" :key="index" :bank="bank" />
@@ -45,6 +46,15 @@ export default {
   asyncComputed : {
     pageData: function() { 
       return this.loadPage(this.page)
+    }
+  },
+  methods: {
+    filterData (selected, name, zipCode) {
+      //if selected filter bankData and pageData (bankData.filter(bank => return bank.product == selected))
+      //if name (bankData.filter(bank => return bank.company == name))
+      //if zipCode (pageData.filter(bank => return bank.zipCode == zipCode))
+      console.log(selected, name, zipCode)
+      
     }
   }
 }

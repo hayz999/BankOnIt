@@ -12,12 +12,15 @@
       v-model="name"
       label="Bank Name"
     ></v-text-field>
-    <h3>Filter by Zip Code</h3>
-    <v-text-field
-      v-model="zipCode"
-      label="Zip Code"
-    ></v-text-field>
-    <v-btn class="primary">Filter</v-btn>
+    <div v-if='this.state'>
+      <h3>Filter by Zip Code</h3>
+      <v-text-field
+        v-model="zipCode"
+        label="Zip Code"
+      ></v-text-field>
+    </div>
+    <v-btn @click='narrowSearch' 
+            class="primary">Filter</v-btn>
   </v-container>
   
 </template>
@@ -26,13 +29,19 @@
 
 export default {
   name: 'FilterResults',
+  props: ['filterData', 'state'],
   data () {
       return {
         selected: '',
         name: '',
         zipCode: ''
       }
+    },
+  methods: {
+    narrowSearch() {
+      this.filterData(this.selected, this.name, this.zipCode)
     }
+  }
 }
 </script>
 
