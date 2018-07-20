@@ -31,7 +31,6 @@ export default {
   section {
     background-image: url('../assets/header.jpg');
     background-size: cover;
-  
   }
 
   @media only screen and (max-width: 600px) {

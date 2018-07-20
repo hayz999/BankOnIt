@@ -26,11 +26,12 @@
       <v-btn v-if='state != null' @click='getByState' >Search</v-btn>
     </v-container>
   </section>
-  <Results v-if='showResult' 
-            :bankData='bankData'
-            :getLimit='getLimit'
-            :zipCode='zipCode'
-            :state='state'/>
+  <div v-if='showResult'>
+    <Results  :bankData='bankData'
+              :getLimit='getLimit'
+              :zipCode='zipCode'
+              :state='state'/>
+  </div>
 </div>
 </template>
 
@@ -89,8 +90,6 @@ export default {
       this.offest = newOffset
       console.log(this.offset);
       this.getByState()
-      
-      
     }
   }
 }

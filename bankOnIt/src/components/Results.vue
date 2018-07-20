@@ -3,7 +3,7 @@
     <h1 class='search-title' v-if='zipCode'>Complaints filed for Zip Code {{this.zipCode}}</h1>
     <h1 class='search-title' v-if='state'>Complaints filed for {{this.state}}</h1>
     <div class="results-container">
-      <div class="results">
+      <div class="results filter-results">
         <FilterResults />
       </div>
       <div class="results">
@@ -12,8 +12,8 @@
     </div>
     <div  class="text-xs-center">
       <v-pagination
-        v-model="page"
-        :length="6"
+          v-model="page"
+          :length="6"
       ></v-pagination>
     </div>
     <NewSearch />
@@ -25,6 +25,7 @@ import Result from './Result'
 import NewSearch from './NewSearch';
 import FilterResults from './FilterResults'
 
+
 export default {
   props: ['bankData', 'getLimit', 'zipCode', 'state'],
   components: {
@@ -35,12 +36,6 @@ export default {
   data () {
     return {
       page: 1
-    }
-  },
-  computed: {
-    propertyComputed () {
-      console.log('I change when page changes');
-      return this.page
     }
   }
 }
@@ -71,5 +66,13 @@ export default {
   .results {
     display: flex;
     flex-direction: column;
+  }
+
+  .filter-results {
+    width: 50%;
+    position: sticky; /* Fixed Sidebar (stay in place on scroll) */
+    top: 20px; /* Stay at the top */
+    
+    overflow-x: hidden; 
   }
 </style>
