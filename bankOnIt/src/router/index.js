@@ -4,8 +4,10 @@ import Header from '@/components/Header'
 import Search from '@/components/Search'
 import AsyncComputed from 'vue-async-computed'
 
+
 Vue.use(Router)
-Vue.use(AsyncComputed);
+Vue.use(AsyncComputed)
+
 
 export default new Router({
   routes: [
