@@ -31,7 +31,9 @@
               :loadPage='loadPage'
               :zipCode='zipCode'
               :state='state'
-              :getByState2='getByState2'/>
+              :getByState2='getByState2'
+              :updateState='updateState'/>
+              
   </div>
 </div>
 </template>
@@ -68,8 +70,8 @@ export default {
     }
   },
   methods: {
-    handleStateSearch () {
-      this.getByState()
+    handleStateSearch (state) {
+      this.getByState(this.state)
     }, 
     getByZip () {
       fetch(zipUrl + this.zipCode)
@@ -80,8 +82,8 @@ export default {
       this.showSearch = !this.showSearch
       this.showResult = !this.showResult
     },
-    getByState () {
-      fetch(stateUrl + this.state + this.sL + this.limit + this.oS + this.offset )
+    getByState (state) {
+      fetch(stateUrl + state + this.sL + this.limit + this.oS + this.offset )
       .then(response => response.json())
       .then(data => {
         this.bankData = data
@@ -101,6 +103,12 @@ export default {
       let newOffset = this.limit * (page - 1)
       window.scrollTo(0, 0)
       return this.getByState2(newOffset)
+    },
+    updateState (state) {
+      this.state = state 
+      this.handleStateSearch(this.state)
+      this.showSearch = !this.showSearch
+      this.showResult = !this.showResult
     }
   }
 }

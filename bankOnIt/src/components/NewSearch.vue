@@ -29,7 +29,7 @@
         single-line
       ></v-select>
     </v-flex> 
-    <v-btn class="primary">Search</v-btn>
+    <v-btn @click.stop.prevent='newSearch' class="primary">Search</v-btn>
     </v-card-text>      
   </v-card> 
   </v-dialog>
@@ -40,6 +40,7 @@
 <script>
 export default {
   name: 'NewSearch',
+  props: ['updateState'],
   data () {
     return {
       dialog: false,
@@ -48,6 +49,11 @@ export default {
         ],
       valid: false,
       state: ''
+    }
+  }, 
+  methods :{
+    newSearch () {
+      this.updateState(this.state)
     }
   }
 }

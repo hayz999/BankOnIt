@@ -21,7 +21,7 @@
           :total-visible='5'
       ></v-pagination>
     </div>
-    <NewSearch />
+    <NewSearch :updateState='this.updateState' />
   </section>
 </template>
 
@@ -30,9 +30,8 @@ import Result from './Result'
 import NewSearch from './NewSearch';
 import FilterResults from './FilterResults'
 
-
 export default {
-  props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2'],
+  props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2', 'updateState'],
   components: {
     Result,
     NewSearch,
