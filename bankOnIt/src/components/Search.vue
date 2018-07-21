@@ -105,7 +105,8 @@ export default {
       return this.getByState2(newOffset)
     },
     updateState (state) {
-      this.state = state 
+      this.state = state
+      this.zipCode = '' 
       this.handleStateSearch(this.state)
       this.showSearch = !this.showSearch
       this.showResult = !this.showResult
