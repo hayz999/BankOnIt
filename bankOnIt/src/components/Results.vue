@@ -1,7 +1,19 @@
 <template>
   <section>
-    <h1 class='search-title' v-if='zipCode'>Complaints filed for Zip Code {{this.zipCode}}</h1>
-    <h1 class='search-title' v-if='state'>Complaints filed for {{this.state}}</h1>
+    <h1 class='search-title' v-if='zipCode'>
+      Complaints filed for Zip Code {{this.zipCode}}
+      <v-tooltip bottom>
+        <i slot="activator" class="material-icons">info</i>
+        <span>Please note sensitive information like important numbers and names have been replaced with 'XXXX'.</span>
+      </v-tooltip>
+    </h1>
+    <h1 class='search-title' v-if='state'>
+      Complaints filed for {{this.state}}
+      <v-tooltip bottom>
+        <i slot="activator" class="material-icons">info</i>
+        <span>Please note sensitive information like important numbers and names have been replaced with 'XXXX'.</span>
+      </v-tooltip>
+    </h1>
     <div class="results-container">
       <div class="results filter-results">
         <FilterResults :filterData='filterData'
