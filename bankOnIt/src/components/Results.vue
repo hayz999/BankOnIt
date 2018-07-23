@@ -18,15 +18,7 @@
       <div class="results filter-results">
         <v-container fluid>
           <div class='filter-container'>
-            <v-btn v-if='!show' class='filter-button' @click="showFilter">Show Filters</v-btn>
-            <div v-if='show'>
               <h1>Filter Results</h1>
-              <h3>Product type</h3>
-              <v-checkbox v-model="selected" label="Mortgage" value="Mortgage"></v-checkbox>
-              <v-checkbox v-model="selected" label="Credit Card" value="Credit Card"></v-checkbox>
-              <v-checkbox v-model="selected" label="Loan" value="Loan"></v-checkbox>
-              <v-checkbox v-model="selected" label="Checking / Savings" value="Checking / Savings"></v-checkbox>
-              <v-checkbox v-model="selected" label="General" value="General"></v-checkbox>
               <h3>Filter by Bank</h3>
               <v-text-field
                 v-model="name"
@@ -41,7 +33,7 @@
               </div>
               <v-btn @click="filterByZip" class="primary">Filter</v-btn>
             </div>
-          </div>
+          
         </v-container>
       </div>
       <div v-if='state' class="results">
@@ -54,7 +46,7 @@
     <div v-if='state' class="text-xs-center">
       <v-pagination
           v-model="page"
-          :length="15"
+          :length="30"
           :total-visible='5'
       ></v-pagination>
     </div>
@@ -78,7 +70,7 @@ export default {
       selected: '',
       name: '',
       zipcode: '',
-      show: false
+      
     }
   },
   asyncComputed : {
@@ -87,9 +79,6 @@ export default {
     }
   },
   methods: {
-    showFilter() {
-      this.show = !this.show
-    },
     filterByZip() {
       this.getByZipAndState(this.pageData, this.zipcode)
     }

@@ -19,8 +19,10 @@
   
   </div>
   <div class='search'>
-    <!-- <h3 class="display-1">Start a new search here!</h3> -->
-    <v-btn :to="{ name: 'Search' }" depressed large color="primary">Search Now!</v-btn>
+    <v-btn class='search-button' 
+            :to="{ name: 'Search' }" 
+            large color="primary">
+            Search Now!</v-btn>
   </div>
 </div>
 </template>
@@ -36,6 +38,7 @@ export default {
   .info-container {
     display: flex;
     flex-direction: column;
+    
   }
 
   .logo {
@@ -46,6 +49,7 @@ export default {
   .banner {
     display: flex;
     flex-direction: row-reverse;
+    
   }
 
   @media only screen and (max-width: 600px) {
@@ -73,6 +77,12 @@ export default {
     flex-direction: row;
     justify-content: space-around;
     margin: 4rem 0;
+  }
+
+  .search-button {
+    width: 30%;
+    height: 10vh;
+    box-shadow: 3px 6px 10px gray;
   }
 
 </style>

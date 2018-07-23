@@ -36,6 +36,23 @@
               :getByZipAndState='getByZipAndState'/>
               
   </div>
+  <div class="info-container" v-if='showSearch'>
+    <v-divider color="primary" class="my-3"></v-divider>
+    <h2>Find data on all of the popular banks shown below:</h2>
+    <div class='logo-container'>
+      <img src='../assets/logos/1stbank.jpg' alt='logo'/>
+      <img src='../assets/logos/bofa.png' alt='logo'/>
+      <img src='../assets/logos/capital1.png' alt='logo'/>
+      <img src='../assets/logos/experian.png' alt='logo'/>
+      <img src='../assets/logos/wells_fargo.png' alt='logo'/>
+    </div>
+    <div class='logo-container'>
+      <img src='../assets/logos/nation.png' alt='logo'/>
+      <img src='../assets/logos/PNClogo.png' alt='logo'/>
+      <img src='../assets/logos/regions.png' alt='logo'/>
+      <img src='../assets/logos/jp.png' alt='logo'/>
+    </div>
+  </div>
 </div>
 </template>
 
@@ -125,11 +142,49 @@ export default {
 
 <style scoped>
   .search-container {
-    margin-right: 5rem;
-    margin-left: 5rem;
+    margin-right: 15rem;
+    margin-left: 15rem;
     margin-top: 2rem;
     background-color: white;
-    box-shadow: 3px 6px 50px gray;
+    box-shadow: 3px 6px 10px gray;
+  }
+
+  img {
+    width: 10%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .logo-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 3rem;
+    text-align: center;
+    
+  }
+
+  @media only screen and (max-width: 600px) {
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0;
+      margin-top: 4rem;
+      text-align: center;
+    }
+    img {
+      width: 15%;
+      height: auto;
+    }
   }
 </style>
 
