@@ -70,8 +70,7 @@ export default {
   props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2', 'updateState', 'getByZipAndState'],
   components: {
     Result,
-    NewSearch,
-    
+    NewSearch
   },
   data () {
     return {

@@ -77,8 +77,6 @@ export default {
     getByZip () {
       fetch(zipUrl + this.zipCode)
       .then(response => response.json())
-      .then(console.log(url + this.zipCode)
-      )
       .then(data => {
         this.bankData = data
       })
