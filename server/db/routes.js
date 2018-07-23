@@ -60,7 +60,6 @@ router.get('/state/product', (req, res) => {
 
 router.get('/:state/:company', (req, res) => {
   const { limit, offset } = getQueryOptions(req.query)
-  const bank = (req.params.company).replace(/([A-Z]+)*([A-Z][a-z])/g, "$1 $2").toUpperCase()
   
   if (req.params.state && req.params.company) {
     complaints.find({ 'state': req.params.state, 'company': bank }, { limit: limit, skip: offset })

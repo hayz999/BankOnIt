@@ -16,25 +16,7 @@
     </h1>
     <div class="results-container">
       <div class="results filter-results">
-        <v-container fluid>
-          <div class='filter-container'>
-              <h1>Filter Results</h1>
-              <h3>Filter by Bank</h3>
-              <v-text-field
-                v-model="name"
-                label="Bank Name"
-              ></v-text-field>
-              <div v-if='this.state'>
-                <h3>Filter by Zip Code</h3>
-                <v-text-field
-                  v-model="zipcode"
-                  label="Zip Code"
-                ></v-text-field>
-              </div>
-              <v-btn @click="filterByZip" class="primary">Filter</v-btn>
-            </div>
-          
-        </v-container>
+        <Data :state='this.state'/>
       </div>
       <div v-if='state' class="results">
         <Result v-for="(bank, index) in pageData" :key="index" :bank="bank" />
@@ -57,12 +39,14 @@
 <script>
 import Result from './Result'
 import NewSearch from './NewSearch';
+import Data from './Data'
 
 export default {
   props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2', 'updateState', 'getByZipAndState'],
   components: {
     Result,
-    NewSearch
+    NewSearch,
+    Data
   },
   data () {
     return {

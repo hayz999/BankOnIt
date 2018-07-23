@@ -25,31 +25,55 @@
   // key is the month value is the number of occurances 
 
 <template>
-  
+<div>
+  <h1>Hi</h1>
+  <button @click="reduceByCompany">Reduce!</button>
+  <button @click="reduceByProduct">Reduce!</button>
+</div>
 </template>
 
 <script>
+const stateUrl = 'https://bankonit.herokuapp.com/complaints/state/'
+
+
+
+
 export default {
+  name: 'Data',
+  props: ['state'],
+  data () {
+    return {
+      banks: ''
+    }
+  },
+  mounted(){ 
+    this.getByState()
+  },
   methods: {
-    reduceByCompany (bankArray) {
-      return bankArray.reduce((obj, bank, index) => {
-        if(index == 1) {
-          obj.name = bank
-        } else {
-          obj.occurance = bank
-        }
-        return obj
-      }, {})
+    getByState () {
+      fetch(stateUrl + this.state)
+      .then(response => response.json())
+      .then(data => {
+        this.banks = data
+      })
+    },
+    reduceByCompany () {
+      const companyResult = [...this.banks.reduce( (mp, o) => {
+      if(!mp.has(o.company)) mp.set(o.company, Object.assign({count: 0}, o))
+        mp.get(o.company).count++
+        return mp
+      }, new Map).values()]
+      console.log(companyResult)
+      return companyResult
     },
     reduceByProduct (bankArray) {
-      return bankArray.reduce((obj, bank, index) => {
-        if(index == 8) {
-          obj.product = bank
-        } else {
-          obj.occurance = bank
-        }
-        return obj
-      }, {})
+      const productResult = [...this.banks.reduce( (mp, o) => {
+      if(!mp.has(o.product)) mp.set(o.product, Object.assign({count: 0}, o))
+        mp.get(o.product).count++
+        return mp
+      }, new Map).values()]
+      console.log(productResult)
+      return productResult
     }
   }
 }
