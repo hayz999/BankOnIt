@@ -72,7 +72,6 @@ export default {
         mp.get(o.product).count++
         return mp
       }, new Map).values()]
-      console.log(productResult)
       return productResult
     }
   }
