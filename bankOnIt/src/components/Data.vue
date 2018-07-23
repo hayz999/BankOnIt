@@ -43,7 +43,9 @@ export default {
   props: ['state'],
   data () {
     return {
-      banks: ''
+      banks: [],
+      companyData: [],
+      productData: []
     }
   },
   mounted(){ 
@@ -55,6 +57,8 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.banks = data
+        this.reduceByCompany()
+        this.reduceByProduct()
       })
     },
     reduceByCompany () {
@@ -63,8 +67,9 @@ export default {
         mp.get(o.company).count++
         return mp
       }, new Map).values()]
-      console.log(companyResult)
-      return companyResult
+      console.log(companyResult.filter(result => result.count >= 10))
+      this.companyData= companyResult.filter(result => result.count >= 10)
+      return companyResult.filter(result => result.count >= 10)
     },
     reduceByProduct (bankArray) {
       const productResult = [...this.banks.reduce( (mp, o) => {
@@ -72,7 +77,9 @@ export default {
         mp.get(o.product).count++
         return mp
       }, new Map).values()]
-      return productResult
+      console.log(productResult.filter(result => result.count >= 10))
+      this.productData= productResult.filter(result => result.count >= 10)
+      return productResult.filter(result => result.count >= 10)
     }
   }
 }
