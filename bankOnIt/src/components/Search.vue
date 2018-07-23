@@ -32,15 +32,16 @@
               :zipCode='zipCode'
               :state='state'
               :getByState2='getByState2'
-              :updateState='updateState'/>
+              :updateState='updateState'
+              :getByZipAndState='getByZipAndState'/>
               
   </div>
 </div>
 </template>
 
 <script>
-const zipUrl = 'https://bankonit.herokuapp.com/complaints/zipcode?zipCode='
-const stateUrl = 'https://bankonit.herokuapp.com/complaints/state?state='
+const stateUrl = 'https://bankonit.herokuapp.com/complaints/state/'
+const zipUrl = 'https://bankonit.herokuapp.com/complaints/zipCode/'
 
 import Results from './Results';
 
@@ -61,7 +62,7 @@ export default {
         v => v.length <= 10 || 'Zip Code must be less than 6 characters'
       ],
       bankData: [],
-      sL: '&limit=',
+      sL: '?limit=',
       oS: '&offset=',
       limit: 10,
       offset: 0,
@@ -76,6 +77,8 @@ export default {
     getByZip () {
       fetch(zipUrl + this.zipCode)
       .then(response => response.json())
+      .then(console.log(url + this.zipCode)
+      )
       .then(data => {
         this.bankData = data
       })
@@ -97,6 +100,13 @@ export default {
       .then(response => response.json())
       .then(data => {
         return data
+      })
+    },
+    getByZipAndState(pageData, zipcode){
+      fetch(url + this.state + '/' + zipcode)
+      .then(response => response.json())
+      .then(result => {
+        pageData = result
       })
     },
     loadPage(page) {

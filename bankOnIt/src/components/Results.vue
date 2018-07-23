@@ -18,26 +18,29 @@
       <div class="results filter-results">
         <v-container fluid>
           <div class='filter-container'>
-            <h1>Filter Results</h1>
-            <h3>Product type</h3>
-            <v-checkbox v-model="selected" label="Mortgage" value="Mortgage"></v-checkbox>
-            <v-checkbox v-model="selected" label="Credit Card" value="Credit Card"></v-checkbox>
-            <v-checkbox v-model="selected" label="Loan" value="Loan"></v-checkbox>
-            <v-checkbox v-model="selected" label="Checking / Savings" value="Checking / Savings"></v-checkbox>
-            <v-checkbox v-model="selected" label="General" value="General"></v-checkbox>
-            <h3>Filter by Bank</h3>
-            <v-text-field
-              v-model="name"
-              label="Bank Name"
-            ></v-text-field>
-            <div v-if='this.state'>
-              <h3>Filter by Zip Code</h3>
+            <v-btn v-if='!show' class='filter-button' @click="showFilter">Show Filters</v-btn>
+            <div v-if='show'>
+              <h1>Filter Results</h1>
+              <h3>Product type</h3>
+              <v-checkbox v-model="selected" label="Mortgage" value="Mortgage"></v-checkbox>
+              <v-checkbox v-model="selected" label="Credit Card" value="Credit Card"></v-checkbox>
+              <v-checkbox v-model="selected" label="Loan" value="Loan"></v-checkbox>
+              <v-checkbox v-model="selected" label="Checking / Savings" value="Checking / Savings"></v-checkbox>
+              <v-checkbox v-model="selected" label="General" value="General"></v-checkbox>
+              <h3>Filter by Bank</h3>
               <v-text-field
-                v-model="zipcode"
-                label="Zip Code"
+                v-model="name"
+                label="Bank Name"
               ></v-text-field>
+              <div v-if='this.state'>
+                <h3>Filter by Zip Code</h3>
+                <v-text-field
+                  v-model="zipcode"
+                  label="Zip Code"
+                ></v-text-field>
+              </div>
+              <v-btn @click="filterByZip" class="primary">Filter</v-btn>
             </div>
-            <v-btn class="primary">Filter</v-btn>
           </div>
         </v-container>
       </div>
@@ -45,7 +48,7 @@
         <Result v-for="(bank, index) in pageData" :key="index" :bank="bank" />
       </div>
       <div v-if='zipCode' class="results">
-        <Result v-for="(bank, index) in filteredBanks" :key="index" :bank="bank" />
+        <Result v-for="(bank, index) in bankData" :key="index" :bank="bank" />
       </div>
     </div>
     <div v-if='state' class="text-xs-center">
@@ -64,7 +67,7 @@ import Result from './Result'
 import NewSearch from './NewSearch';
 
 export default {
-  props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2', 'updateState'],
+  props: ['bankData', 'loadPage', 'zipCode', 'state', 'getByState2', 'updateState', 'getByZipAndState'],
   components: {
     Result,
     NewSearch,
@@ -75,7 +78,8 @@ export default {
       page: 1,
       selected: '',
       name: '',
-      zipcode: ''
+      zipcode: '',
+      show: false
     }
   },
   asyncComputed : {
@@ -84,13 +88,11 @@ export default {
     }
   },
   methods: {
-    
-  },
-  computed: {
-    filteredBanks: function () {
-      return this.bankData.filter(bank => {
-        return bank.company.match(this.name) 
-      })
+    showFilter() {
+      this.show = !this.show
+    },
+    filterByZip() {
+      this.getByZipAndState(this.pageData, this.zipcode)
     }
   }
 }
@@ -118,6 +120,12 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 600px) {
+    .filter-container {
+      width: 100vw;
+    }
+  }
+
   .results {
     display: flex;
     flex-direction: column;
@@ -125,12 +133,8 @@ export default {
 
   .filter-container {
     width: 25vw;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .filter-container {
-      width: 100%;
-    }
+    position: sticky;
+    top: 10px;
   }
 
 </style>

@@ -18,38 +18,66 @@ router.get('/', (req, res) => {
     .then(complaints => res.json(complaints))
 })
 
-router.get('/state', (req, res) => {
+router.get('/zipCode/:zipCode', (req, res) => {
+  if (req.params.zipCode) {
+    complaints.find({ 'zipCode': req.params.zipCode })
+      .then(complaints => res.json(complaints))
+  } else {
+    res.json({ message: 'ZIP Code not found' })
+  }
+})
+
+router.get('/state/:state', (req, res) => {
   const { limit, offset } = getQueryOptions(req.query)
-  if(req.query.state) {
-    complaints.find({'state': req.query.state}, {limit: limit, skip: offset})
+  if(req.params.state) {
+    complaints.find({'state': req.params.state}, {limit: limit, skip: offset})
       .then(complaints => res.json(complaints))
   } else {
     res.json({message: 'State not found'})
   }
 })
 
-router.get('/state/zipcode', (req,res) => {
-  
-})
-
-router.get('/zipcode', (req, res) => {
-  if (req.query.zipCode) {
-    complaints.find({ 'zipCode': req.query.zipCode })
+router.get('/:state/:zipCode', (req,res) => {
+  if(req.params.state && req.params.zipCode) {
+    console.log(req.params.state, req.params.zipCode);
+    complaints.find({ 'state': req.params.state, 'zipCode': req.params.zipCode})
       .then(complaints => res.json(complaints))
   } else {
     res.json({message: 'ZIP Code not found'})
   }
 })
 
-//this does not work!!
-router.get('/company' , (req, res) => {
-  if(req.query.company) {
-    complaints.find({'company' : req.query.company})
+router.get('/state/product', (req, res) => {
+
+});
+
+function toCamelCase(string) {
+  string = string.toLowerCase().replace(/(?:(^.)|([-_\s]+.))/g, function (match) {
+    return match.charAt(match.length - 1).toUpperCase();
+  });
+  return string.charAt(0).toLowerCase() + string.substring(1);
+}
+
+router.get('/:state/:company', (req, res) => {
+  const { limit, offset } = getQueryOptions(req.query)
+  const bank = toCamelCase(req.params.company)
+  if (req.params.state && bank) {
+    complaints.find({ 'state': req.params.state, 'company': req.params.company }, { limit: limit, skip: offset })
       .then(complaints => res.json(complaints))
   } else {
-    res.json({message: 'Company not found'})
+    res.json({ message: 'State not found' })
   }
-})
+});
+
+
+
+router.get('/zipcode/company', (req, res) => {
+
+});
+
+router.get('/zipcode/product', (req, res) => {
+
+});
 
 router.post('/', (req, res) => {
   
