@@ -70,8 +70,8 @@ export default {
     }
   },
   methods: {
-    handleStateSearch (state) {
-      this.getByState(this.state)
+    handleStateSearch () {
+      this.getByState()
     }, 
     getByZip () {
       fetch(zipUrl + this.zipCode)
@@ -82,8 +82,8 @@ export default {
       this.showSearch = !this.showSearch
       this.showResult = !this.showResult
     },
-    getByState (state) {
-      fetch(stateUrl + state + this.sL + this.limit + this.oS + this.offset )
+    getByState () {
+      fetch(stateUrl + this.state + this.sL + this.limit + this.oS + this.offset )
       .then(response => response.json())
       .then(data => {
         this.bankData = data

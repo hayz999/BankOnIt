@@ -24,5 +24,38 @@
   // key is company name value is number of occurances for that bank
   // key is the month value is the number of occurances 
 
+<template>
+  
+</template>
+
+<script>
+export default {
+  methods: {
+    reduceByCompany (bankArray) {
+      return bankArray.reduce((obj, bank, index) => {
+        if(index == 1) {
+          obj.name = bank
+        } else {
+          obj.occurance = bank
+        }
+        return obj
+      }, {})
+    },
+    reduceByProduct (bankArray) {
+      return bankArray.reduce((obj, bank, index) => {
+        if(index == 8) {
+          obj.product = bank
+        } else {
+          obj.occurance = bank
+        }
+        return obj
+      }, {})
+    }
+  }
+}
+
+</script>
+  
+
 
   

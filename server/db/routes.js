@@ -28,6 +28,10 @@ router.get('/state', (req, res) => {
   }
 })
 
+router.get('/state/zipcode', (req,res) => {
+  
+})
+
 router.get('/zipcode', (req, res) => {
   if (req.query.zipCode) {
     complaints.find({ 'zipCode': req.query.zipCode })

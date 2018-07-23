@@ -61,22 +61,19 @@ export default {
     margin: 1rem 1rem;
     max-width: 70vw;
     min-width: 70vw;
-    box-shadow: 3px 6px 50px gray;
   }
   
   .results:hover {
-    box-shadow: 8px 16px 50px gray;
+    
   }
 
   .card-content {
     padding: 1rem;
-    margin-right: 2rem;
   }
 
   @media only screen and (max-width: 600px) {
     .card-content {
       padding: 1rem;
-      margin-right: 0;
     }
 
     .results {
