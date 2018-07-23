@@ -3,7 +3,7 @@
     <v-card class='card-content'>
       <v-card-title primary-title >
         <i class="material-icons">account_balance</i>
-        <h1 class="headline">{{bank.company}}</h1>
+        <h1 class="headline">{{bank.company | capitalize}}</h1>
       </v-card-title>
       <v-divider color="primary" class="my-3"></v-divider>
       <div class='title-container'>
@@ -51,6 +51,16 @@ export default {
     return {
       complaint: this.bank.consumerComplaintNarrative,
       responseToCustomer: this.bank.companyResponseToConsumer
+    }
+  },
+  filters: {
+    capitalize: function (str) {
+    return str.replace(
+      /\w\S*/g,
+        function(txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+      );
     }
   }
 }
