@@ -15,13 +15,13 @@
       </v-tooltip>
     </h1>
     <div class="results-container">
-      <div v-if='state' class="results filter-results filter-container">
-        <Data :state='this.state'/>
+      <div v-if='state' >
+        <Data class="filter-container" :state='this.state'/>
       </div>
       <div v-if='state' class="results">
         <Result v-for="(bank, index) in pageData" :key="index" :bank="bank" />
       </div>
-      <div v-if='zipCode' class="results">
+      <div v-if='zipCode' class="zip-results">
         <Result v-for="(bank, index) in bankData" :key="index" :bank="bank" />
       </div>
     </div>
@@ -90,11 +90,8 @@ export default {
       display: flex;
       flex-direction: column;
     }
-  }
-
-  @media only screen and (max-width: 600px) {
     .filter-container {
-      width: 100vw;
+      width: 94vw !important;
     }
   }
 
@@ -107,6 +104,12 @@ export default {
     width: 25vw;
     position: sticky;
     top: 10px;
+  }
+
+  .zip-results {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
   }
 
 </style>

@@ -1,5 +1,6 @@
 <template>
-<div>
+<div class="data-content">
+  <h1>Analysis of Complaints</h1>
   <CompanyGraph :companyLabels='companyLabels'
                 :companyDataset='companyDataset' />
   <ProductGraph :productLabels='productLabels'
@@ -84,6 +85,17 @@ export default {
 }
 
 </script>
+
+<style scoped>
+  .data-content {
+    text-align: center;
+    box-shadow: 2px 2px 8px gray;
+    margin: 1rem;
+    padding: 1rem 0;
+    background-color: white;
+  }
+</style>
+
   
 
 
