@@ -146,7 +146,7 @@ export default {
     margin-left: 15rem;
     margin-top: 2rem;
     background-color: white;
-    box-shadow: 3px 6px 10px gray;
+    box-shadow: 2px 2px 8px gray;
   }
 
   img {

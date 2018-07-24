@@ -14,6 +14,7 @@ export default {
   .footer {
     margin-top: 2rem;
     padding-left: 2rem;
+    color: white;
   }
 </style>
 
