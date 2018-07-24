@@ -38,7 +38,11 @@ export default {
   .info-container {
     display: flex;
     flex-direction: column;
-    
+    padding: 3rem;
+  }
+
+  h3 {
+    padding-bottom: 1rem;
   }
 
   .logo {
@@ -49,7 +53,7 @@ export default {
   .banner {
     display: flex;
     flex-direction: row-reverse;
-    
+    margin-top: 2rem;
   }
 
   @media only screen and (max-width: 600px) {
@@ -62,6 +66,10 @@ export default {
   @media only screen and (max-width: 600px) {
     .banner-img {
       display: none;
+    }
+    .logo {
+      height: 10vh;
+      margin-left: 25%;
     }
   }
 

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <a href='http://localhost:8080/#/'>
+    <a href='https://bankonit-app.firebaseapp.com'>
       <img  :src='image' alt='logo' />
     </a>
   </section>
