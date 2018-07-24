@@ -2,7 +2,7 @@
 <div class="text-xs-center">
   <v-dialog
     v-model="dialog"
-    width="1500"
+    width="2000"
     scrollable="true">
     <v-btn
         slot="activator"
@@ -15,7 +15,7 @@
                     :labels="chartdata.labels"
                     :bind="true"
                     :datalabel="'Complaints'"
-                    :height="200"
+                    :height="400"
                     :backgroundcolor="'#E8F5E9'">
       </chartjs-horizontal-bar>
     </v-card>

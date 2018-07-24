@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       myoption:{
-            responsive:true,
+            responsive:false,
             maintainAspectRatio:true,
             title: {
                 display: true,

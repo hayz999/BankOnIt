@@ -15,7 +15,7 @@
       </v-tooltip>
     </h1>
     <div class="results-container">
-      <div class="results filter-results">
+      <div v-if='state' class="results filter-results filter-container">
         <Data :state='this.state'/>
       </div>
       <div v-if='state' class="results">
