@@ -1,6 +1,7 @@
 <template>
 <div>
-  <CompanyGraph :companyData='companyData' />
+  <CompanyGraph :companyLabels='companyLabels'
+                :companyDataset='companyDataset' />
 </div>
 </template>
 
@@ -18,7 +19,9 @@ export default {
     return {
       banks: [],
       companyData: [],
-      productData: []
+      productData: [],
+      companyLabels: [],
+      companyDataset: []
     }
   },
   mounted(){ 
@@ -32,6 +35,7 @@ export default {
         this.banks = data
         this.reduceByCompany()
         this.reduceByProduct()
+        this.getLabelsAndDataByCompany()
       })
     },
     reduceByCompany () {
@@ -51,7 +55,19 @@ export default {
       }, new Map).values()]
       this.productData= productResult.filter(result => result.count >= 5)
       return productResult.filter(result => result.count >= 5)
+    },
+    getLabelsAndDataByCompany() {
+      this.companyLabels = this.companyData.map(company => company.company)
+      
+      this.companyDataset = this.companyData.map(company => company.count)
     }
+  },
+  beforeDestroy() {
+    this.banks = null
+    this.companyData = null
+    this.productData = null
+    this.companyLabels = null
+    this.companyDataset = null
   }
 }
 
