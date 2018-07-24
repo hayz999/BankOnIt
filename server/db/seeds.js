@@ -3,7 +3,6 @@ const { db } = require('./connection')
 const data = require('../converter')
 
 Promise.all([
-  // Step #1, delete ALL from each collection
   data,
   Complaints.remove({})
 ])

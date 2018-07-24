@@ -39,48 +39,11 @@ router.get('/state/:state', (req, res) => {
 
 router.get('/:state/:zipCode', (req,res) => {
   if(req.params.state && req.params.zipCode) {
-    console.log(req.params.state, req.params.zipCode);
     complaints.find({ 'state': req.params.state, 'zipCode': req.params.zipCode})
       .then(complaints => res.json(complaints))
   } else {
     res.json({message: 'ZIP Code not found'})
   }
-})
-
-router.get('/state/product', (req, res) => {
-
-});
-
-// function toCamelCase(string) {
-//   string = string.toLowerCase().replace(/(?:(^.)|([-_\s]+.))/g, function (match) {
-//     return match.charAt(match.length - 1).toUpperCase();
-//   });
-//   return string.charAt(0).toLowerCase() + string.substring(1);
-// }
-
-router.get('/:state/:company', (req, res) => {
-  const { limit, offset } = getQueryOptions(req.query)
-  
-  if (req.params.state && req.params.company) {
-    complaints.find({ 'state': req.params.state, 'company': bank }, { limit: limit, skip: offset })
-      .then(complaints => res.json(complaints))
-  } else {
-    res.json({ message: 'State not found' })
-  }
-});
-
-
-
-router.get('/zipcode/company', (req, res) => {
-
-});
-
-router.get('/zipcode/product', (req, res) => {
-
-});
-
-router.post('/', (req, res) => {
-  
 })
 
 module.exports = router

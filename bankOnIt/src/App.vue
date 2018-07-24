@@ -16,10 +16,6 @@ export default {
     Footer,
     MainHeader
   }
-  
 }
 </script>
 
-<style>
-
-</style>
