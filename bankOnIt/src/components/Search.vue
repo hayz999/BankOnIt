@@ -185,6 +185,13 @@ export default {
       width: 15%;
       height: auto;
     }
+    .search-container {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      margin-top: 2rem;
+      background-color: white;
+      box-shadow: 2px 2px 8px gray;
+    }
   }
 </style>
 
