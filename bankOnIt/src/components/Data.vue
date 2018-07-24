@@ -2,18 +2,22 @@
 <div>
   <CompanyGraph :companyLabels='companyLabels'
                 :companyDataset='companyDataset' />
+  <ProductGraph :productLabels='productLabels'
+                :productDataset='productDataset' />
 </div>
 </template>
 
 <script>
 const stateUrl = 'https://bankonit.herokuapp.com/complaints/state/'
 import CompanyGraph from './CompanyGraph'
+import ProductGraph from './ProductGraph'
 
 export default {
   name: 'Data',
   props: ['state'],
   components: {
-    CompanyGraph
+    CompanyGraph,
+    ProductGraph
   },
   data () {
     return {
@@ -21,7 +25,9 @@ export default {
       companyData: [],
       productData: [],
       companyLabels: [],
-      companyDataset: []
+      companyDataset: [],
+      productLabels: [],
+      productDataset: []
     }
   },
   mounted(){ 
@@ -36,6 +42,7 @@ export default {
         this.reduceByCompany()
         this.reduceByProduct()
         this.getLabelsAndDataByCompany()
+        this.getLabelsAndDataByProduct()
       })
     },
     reduceByCompany () {
@@ -58,8 +65,11 @@ export default {
     },
     getLabelsAndDataByCompany() {
       this.companyLabels = this.companyData.map(company => company.company)
-      
       this.companyDataset = this.companyData.map(company => company.count)
+    },
+    getLabelsAndDataByProduct() {
+      this.productLabels = this.productData.map(product => product.product)
+      this.productDataset = this.productData.map(product => product.count)
     }
   },
   beforeDestroy() {
@@ -68,6 +78,8 @@ export default {
     this.productData = null
     this.companyLabels = null
     this.companyDataset = null
+    this.productLabels = null
+    this.productDataset = null
   }
 }
 

@@ -8,14 +8,14 @@
         slot="activator"
         color="primary"
         dark>
-    Complaints per Bank
+    Complaints by Product
     </v-btn>
     <v-card style="height: 100%; width: 100%;">
       <chartjs-horizontal-bar  :data='chartdata.datasets'
                     :labels="chartdata.labels"
                     :bind="true"
                     :datalabel="'Complaints'"
-                    :height="200"
+                    :height="100"
                     :backgroundcolor="'#E8F5E9'">
       </chartjs-horizontal-bar>
     </v-card>
@@ -26,12 +26,12 @@
 <script>
 
 export default {
-  props: ['companyLabels', 'companyDataset'],
+  props: ['productLabels', 'productDataset'],
   computed: {
     chartdata: function () {
       return {
-        labels: this.companyLabels,
-        datasets: this.companyDataset
+        labels: this.productLabels,
+        datasets: this.productDataset
       }
     }
   },
@@ -43,7 +43,7 @@ export default {
             title: {
                 display: true,
                 position: 'bottom',
-                text: 'Complaints per bank'
+                text: 'Complaints by Product'
             },
             scales: {
                 yAxes: [{
@@ -56,6 +56,3 @@ export default {
   }
 }
 </script>
-
-
-
