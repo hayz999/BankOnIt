@@ -5,6 +5,10 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
+import 'chart.js'
+import 'hchs-vue-charts'
+
+Vue.use(window.VueCharts)
 
 
 Vue.config.productionTip = false
