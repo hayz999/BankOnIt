@@ -1,66 +1,65 @@
 <template>
-<div>
-  <section class='search-container' v-if='showSearch'>
-    <v-container fluid >
-      <v-layout row wrap align-center>
-        <v-select
-          :items="states"
-          v-model="state"
-          auto
-          label="Select a State"
-          hide-details
-          single-line>
-        </v-select>
-      </v-layout>
-      <h2>OR</h2>
-      <v-form v-model="valid">
-        <v-text-field
-          v-model="zipCode"
-          :rules="zipCodeRules"
-          :counter="6"
-          label="Enter Zip Code"
-          required>
-        </v-text-field>
-      </v-form>
-      <v-btn v-if='zipCode != ""' @click='getByZip' >Search</v-btn>
-      <v-btn v-if='state != null' @click.stop.prevent='handleStateSearch' >Search</v-btn>
-    </v-container>
-  </section>
-  <div v-if='showResult'>
-    <Results  :bankData='bankData'
-              :loadPage='loadPage'
-              :zipCode='zipCode'
-              :state='state'
-              :getByState2='getByState2'
-              :updateState='updateState'
-              :getByZipAndState='getByZipAndState'/>
-              
-  </div>
-  <div class="info-container" v-if='showSearch'>
-    <v-divider color="primary" class="my-3"></v-divider>
-    <h2>Find data on all of the popular banks shown below:</h2>
-    <div class='logo-container'>
-      <img src='../assets/logos/1stbank.jpg' alt='logo'/>
-      <img src='../assets/logos/bofa.png' alt='logo'/>
-      <img src='../assets/logos/capital1.png' alt='logo'/>
-      <img src='../assets/logos/experian.png' alt='logo'/>
-      <img src='../assets/logos/wells_fargo.png' alt='logo'/>
+  <div>
+    <section class='search-container' v-if='showSearch'>
+      <v-container fluid >
+        <v-layout row wrap align-center>
+          <v-select
+            :items="states"
+            v-model="state"
+            auto
+            label="Select a State"
+            hide-details
+            single-line>
+          </v-select>
+        </v-layout>
+        <h2>OR</h2>
+        <v-form v-model="valid">
+          <v-text-field
+            v-model="zipCode"
+            :rules="zipCodeRules"
+            :counter="6"
+            label="Enter Zip Code"
+            required>
+          </v-text-field>
+        </v-form>
+        <v-btn v-if='zipCode != ""' @click='getByZip' >Search</v-btn>
+        <v-btn v-if='state != null' @click.stop.prevent='handleStateSearch' >Search</v-btn>
+      </v-container>
+    </section>
+    <div v-if='showResult'>
+      <Results  :bankData='bankData'
+                :loadPage='loadPage'
+                :zipCode='zipCode'
+                :state='state'
+                :getByState2='getByState2'
+                :updateState='updateState'
+                :getByZipAndState='getByZipAndState'/>          
     </div>
-    <div class='logo-container'>
-      <img src='../assets/logos/nation.png' alt='logo'/>
-      <img src='../assets/logos/PNClogo.png' alt='logo'/>
-      <img src='../assets/logos/regions.png' alt='logo'/>
-      <img src='../assets/logos/jp.png' alt='logo'/>
+    <div class="info-container" v-if='showSearch'>
+      <v-divider color="primary" class="my-3"></v-divider>
+      <h2>Find data on all of the popular banks shown below:</h2>
+      <div class='logo-container'>
+        <img src='../assets/logos/1stbank.jpg' alt='logo'/>
+        <img src='../assets/logos/bofa.png' alt='logo'/>
+        <img src='../assets/logos/capital1.png' alt='logo'/>
+        <img src='../assets/logos/experian.png' alt='logo'/>
+        <img src='../assets/logos/wells_fargo.png' alt='logo'/>
+      </div>
+      <div class='logo-container'>
+        <img src='../assets/logos/nation.png' alt='logo'/>
+        <img src='../assets/logos/PNClogo.png' alt='logo'/>
+        <img src='../assets/logos/regions.png' alt='logo'/>
+        <img src='../assets/logos/jp.png' alt='logo'/>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 const stateUrl = 'https://bankonit.herokuapp.com/complaints/state/'
 const zipUrl = 'https://bankonit.herokuapp.com/complaints/zipCode/'
 
-import Results from './Results';
+import Results from './Results'
 
 export default {
   name: 'Search',
@@ -75,9 +74,7 @@ export default {
       valid: false,
       zipCode: "",
       state: null,
-      zipCodeRules: [
-        v => v.length <= 10 || 'Zip Code must be less than 6 characters'
-      ],
+      zipCodeRules: [v => v.length <= 10 || 'Zip Code must be less than 6 characters'],
       bankData: [],
       sL: '?limit=',
       oS: '&offset=',
@@ -141,6 +138,7 @@ export default {
 </script>
 
 <style scoped>
+
   .search-container {
     margin-right: 15rem;
     margin-left: 15rem;
@@ -169,7 +167,6 @@ export default {
     justify-content: center;
     margin: 3rem;
     text-align: center;
-    
   }
 
   @media only screen and (max-width: 600px) {
@@ -193,6 +190,7 @@ export default {
       box-shadow: 2px 2px 8px gray;
     }
   }
+
 </style>
 
 

@@ -1,5 +1,5 @@
 <template>
-<v-layout :fluid='false' class='results ' >
+  <v-layout :fluid='false' class='results ' >
     <v-card class='card-content'>
       <v-card-title primary-title >
         <i class="material-icons">account_balance</i>
@@ -41,7 +41,7 @@
       <h3 v-if='responseToCustomer'>{{bank.companyResponseToConsumer}}</h3>
       <h3 v-else>No response</h3>
     </v-card>
-</v-layout>
+  </v-layout>
 </template>
 
 <script>
@@ -57,24 +57,20 @@ export default {
     capitalize: function (str) {
     return str.replace(
       /\w\S*/g,
-        function(txt) {
-          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        }
-      );
+      function(txt) {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+      });
     }
   }
 }
 </script>
 
 <style scoped>
+
   .results {
     margin: 1rem 1rem;
     max-width: 70vw;
     min-width: 70vw;
-  }
-  
-  .results:hover {
-    
   }
 
   .card-content {

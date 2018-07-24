@@ -20,12 +20,12 @@ export default {
 </script>
 
 <style scoped>
+
   img {
     width: 30%;
     height: auto;
     padding-left: 1rem;
     padding-bottom: 1rem;
-
   }
   
   section {
@@ -37,7 +37,7 @@ export default {
     img {
       width: 80%;
     }
+  }
   
-}
 </style>
 

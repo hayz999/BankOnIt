@@ -1,15 +1,16 @@
 <template>
-<div class="data-content">
-  <h1>Analysis of Complaints</h1>
-  <CompanyGraph :companyLabels='companyLabels'
-                :companyDataset='companyDataset' />
-  <ProductGraph :productLabels='productLabels'
-                :productDataset='productDataset' />
-</div>
+  <div class="data-content">
+    <h1>Analysis of Complaints</h1>
+    <CompanyGraph :companyLabels='companyLabels'
+                  :companyDataset='companyDataset' />
+    <ProductGraph :productLabels='productLabels'
+                  :productDataset='productDataset' />
+  </div>
 </template>
 
 <script>
 const stateUrl = 'https://bankonit.herokuapp.com/complaints/state/'
+
 import CompanyGraph from './CompanyGraph'
 import ProductGraph from './ProductGraph'
 
@@ -87,6 +88,7 @@ export default {
 </script>
 
 <style scoped>
+
   .data-content {
     text-align: center;
     box-shadow: 2px 2px 8px gray;
@@ -94,6 +96,7 @@ export default {
     padding: 1rem 0;
     background-color: white;
   }
+  
 </style>
 
   

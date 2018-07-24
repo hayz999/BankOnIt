@@ -1,39 +1,37 @@
 <template>
-<v-layout row justify-center>
-  <v-dialog v-model="dialog"  max-width="500px">
-    
-      
-  <v-btn
-        slot="activator"
-        color="green"
-        dark
-        medium
-        fixed
-        bottom
-        right
-        fab>
-    <v-icon>search</v-icon>
-  </v-btn>
-  <v-card>
-    <v-card-title>
-      <span class="headline">New Search</span>
-    </v-card-title>
-    <v-card-text>
-    <v-flex xs12 sm12>
-      <v-select
-        :items="states"
-        v-model="state"
-        auto
-        label="Select a State"
-        hide-details
-        single-line
-      ></v-select>
-    </v-flex> 
-    <v-btn @click.stop.prevent='newSearch' class="primary">Search</v-btn>
-    </v-card-text>      
-  </v-card> 
-  </v-dialog>
-</v-layout>
+  <v-layout row justify-center>
+    <v-dialog v-model="dialog"  max-width="500px">       
+    <v-btn
+          slot="activator"
+          color="green"
+          dark
+          medium
+          fixed
+          bottom
+          right
+          fab>
+      <v-icon>search</v-icon>
+    </v-btn>
+    <v-card>
+      <v-card-title>
+        <span class="headline">New Search</span>
+      </v-card-title>
+      <v-card-text>
+        <v-flex xs12 sm12>
+          <v-select
+            :items="states"
+            v-model="state"
+            auto
+            label="Select a State"
+            hide-details
+            single-line
+          ></v-select>
+        </v-flex> 
+        <v-btn @click.stop.prevent='newSearch' class="primary">Search</v-btn>
+      </v-card-text>      
+    </v-card> 
+    </v-dialog>
+  </v-layout>
 </template>
   
 

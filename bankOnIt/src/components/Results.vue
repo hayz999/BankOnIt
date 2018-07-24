@@ -29,8 +29,8 @@
       <v-pagination
           v-model="page"
           :length="30"
-          :total-visible='5'
-      ></v-pagination>
+          :total-visible='5'>
+      </v-pagination>
     </div>
     <NewSearch :updateState='this.updateState' />
   </section>
@@ -38,7 +38,7 @@
 
 <script>
 import Result from './Result'
-import NewSearch from './NewSearch';
+import NewSearch from './NewSearch'
 import Data from './Data'
 
 export default {
@@ -53,8 +53,7 @@ export default {
       page: 1,
       selected: '',
       name: '',
-      zipcode: '',
-      
+      zipcode: ''
     }
   },
   asyncComputed : {
@@ -71,6 +70,7 @@ export default {
 </script>
 
 <style scoped>
+
   section {
     margin-bottom: 4rem;
   }
