@@ -1,21 +1,31 @@
-# bankonit
-
-> A Vue.js project
+# BankOnIt
+![site image](preview.png)
+## About
 
 ## Build Setup
 
-``` bash
-# install dependencies
-npm install
+### Install dependencies
+`npm install`
 
-# serve with hot reload at localhost:8080
-npm run dev
+### Serve with hot reload at localhost:8080
+`npm run dev`
 
-# build for production with minification
-npm run build
+## Technology Used
+### Frontend
+- Vue
+- Vuetify
+- Vue-charts wrapper for Charts.js
+- Firebase
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+### Backend
+- MongoDB
+- Monk
+- Express
+- CSVtoJSON
+- Heroku
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Author
+### [Hayley Zulkoski](https://github.com/hayz999)
+##### https://www.linkedin.com/in/hayley-zulkoski-webdev/
+
+
